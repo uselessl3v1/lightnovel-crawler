@@ -105,6 +105,10 @@ class Scraper(TaskManager, SoupMaker):
         headers.setdefault("Origin", self.home_url.strip("/"))
         headers.setdefault("Referer", self.last_soup_url or self.home_url)
         headers.setdefault("User-Agent", self.user_agent)
+        headers.setdefault("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+        headers.setdefault("Accept-Language", "en-US,en;q=0.5")
+        headers.setdefault("Accept-Encoding", "gzip, deflate, br")
+        headers.setdefault("Connection", "keep-alive")
         kwargs["headers"] = {
             str(k).encode("utf-8"): str(v).encode("utf-8")
             for k, v in headers.items()
